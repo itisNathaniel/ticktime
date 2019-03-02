@@ -10,9 +10,26 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // passport
-passport = config.get('passport');
-app.use(session({ secret: passport.secretKey}))
+passportConfig = config.get('passport');
+app.use(session({ secret: passportConfig.secretKey,resave: true, saveUninitialized:true}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+//Models
+var models = require("./app/models");
+ 
+//Sync Database
+models.sequelize.sync().then(function() {
+ 
+    console.log('Nice! Database looks fine')
+ 
+}).catch(function(err) {
+ 
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
+
+// Pages
 app.get('/', function(req,res) {
     res.send('Hello');
 });
