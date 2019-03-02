@@ -16,11 +16,6 @@ module.exports = function(sequelize, Sequelize) {
             notEmpty: true,
         },
 
-        lastname: {
-            type: Sequelize.STRING,
-            notEmpty: true,
-        },
-
         startTime: {
             type: Sequelize.DATE,
             notEmpty: true,
