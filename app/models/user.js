@@ -44,9 +44,16 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.ENUM('active', 'inactive'),
             defaultValue: 'active'
         }
- 
- 
-    });
+    },
+    {
+        classMethods:{
+            associate:function(models){
+                user.hasMany(models.slots, { foreignKey: 'userID'} );
+                user.hasMany(models.timeType, { foreignKey: 'userID'} );
+            }
+        }
+    }
+    );
  
     return User;
  

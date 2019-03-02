@@ -1,5 +1,5 @@
 var exports = module.exports = {}
- 
+
 exports.addTimeSlot = function(req, res) {
     res.render('add-slot');
 }

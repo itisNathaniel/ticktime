@@ -25,12 +25,16 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.DATE,
             notEmpty: true,
         },
-
-        endTime: {
-            type: Sequelize.STRING,
-        },
+    },
+    {
+        classMethods:{
+            associate:function(models){
+                slots.belongsTo(models.user,{ foreignKey: 'id'});
+            }
+        }
+    }
  
-    });
+    )
  
     return Slots;
  

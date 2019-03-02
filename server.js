@@ -17,7 +17,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Models
-var models = require("./app/models");
+app.set('models', require('./app/models'));
+var models = app.get('models');
 
 //Sync Database
 models.sequelize.sync().then(function() {
@@ -28,10 +29,11 @@ models.sequelize.sync().then(function() {
 
 //Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
-var timeSlotsRoutes = require('./app/routes/timeslots.js')(app, passport);
+var timeSlotsRoutes = require('./app/routes/timeslots.js')(app, models);
 
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);
+
 
 //For Handlebars
 app.set('views', './app/views')
