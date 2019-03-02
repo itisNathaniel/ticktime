@@ -4,7 +4,7 @@ var passport    = require('passport');
 var session     = require('express-session');
 var bodyParser  = require('body-parser');
 var config      = require('config');
-var exphbs = require('express-handlebars');
+var exphbs      = require('express-handlebars');
 
 // bodyparser 
 app.use(bodyParser.urlencoded({extended: true}));
