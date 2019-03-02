@@ -4,22 +4,11 @@ var auth = require('./auth.js');
 
 module.exports = function(app, models) {
  
-    //app.get('/add-slot', isLoggedIn, tSC.addTimeSlot);
+    app.get('/add-slot', isLoggedIn, tSC.addTimeSlot);
     app.get('/add-time-type', isLoggedIn, tSC.addTimeType);
 
-    app.get('/add-slot', function (req,res) {
-        
-        models.slots.create({  
-            userID: '1',
-            timeTypeID: '1',
-            startTime: '0',
-            endTime: '0'
-          })
-          .then(newslot => {
-            console.log(`New slot woo`);
-          });
-          
-        //tSF.addSlot(req,res,app);
+    app.post('/add-slot',isLoggedIn, function (req,res) {  
+        tSF.addSlot(req,res,models);
         res.redirect('/');
     });
 

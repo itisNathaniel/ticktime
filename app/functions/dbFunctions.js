@@ -1,27 +1,19 @@
 var exports = module.exports = {}
 
-exports.addSlot = function(req, res, app) {
+exports.addSlot = function(req, res, models) {
     // console.log(req.user.id)
     // console.log(req.timeTypeID);
     // console.log(req.startTime);
     // console.log(req.endTime);
    
-    var Slots = app.get('models').slots;
-    var slot = Slots.build({
-            //     userID: '1',
-    //     timeTypeID: '1',
-    //     startTime: '0',
-    //     endTime: '0'
-    //console.log(User);
-    //var console.log(User);
-    //models.sequelize.
-    // Slots.create({  
-    //     userID: '1',
-    //     timeTypeID: '1',
-    //     startTime: '0',
-    //     endTime: '0'
-    //   })
-    //   .then(newdata => {
-    //   });
-})
+    models.slots.create({  
+        userID: req.user.id,
+        timeTypeID: req.body.timeTypeID,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime
+      })
+      .then(newslot => {
+        console.log(`New slot woo`);
+      });
+    
 }
