@@ -4,7 +4,10 @@ var auth = require('./auth.js');
 
 module.exports = function(app, models) {
  
-    app.get('/add-slot', isLoggedIn, tSC.addTimeSlot);
+    app.get('/add-slot', isLoggedIn, function (req,res) { 
+         tSC.addTimeSlot(req,res,models);
+    });
+    
     app.get('/add-time-type', isLoggedIn, tSC.addTimeType);
 
     app.post('/add-slot',isLoggedIn, function (req,res) {  

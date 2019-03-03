@@ -25,6 +25,10 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.DATE,
             notEmpty: true,
         },
+
+        description: {
+            type: Sequelize.TEXT,
+        },
     },
     {
         classMethods:{

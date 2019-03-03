@@ -4,6 +4,7 @@ exports.addSlot = function(req, res, models) {
     models.slots.create({  
         userID: req.user.id,
         timeTypeID: req.body.timeTypeID,
+        description: req.body.description,
         startTime: req.body.startTime,
         endTime: req.body.endTime
       })
