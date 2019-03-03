@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequelize) {
-    var timeType = sequelize.define('timeType', {
+    var timeTypeGroup = sequelize.define('timeTypeGroup', {
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -11,27 +11,9 @@ module.exports = function(sequelize, Sequelize) {
             notEmpty: true,
         },
 
-        groupTypeID: {
-            type: Sequelize.INTEGER,
-            notEmpty: true,
-        },
-
-        typeName: {
+        groupTypeName: {
             type: Sequelize.STRING,
             notEmpty: true,
-        },
-
-        typeColour: {
-            type: Sequelize.STRING,
-            notEmpty: true,
-        },
-
-        typeDescription: {
-            type: Sequelize.STRING,
-        },
- 
-        typeIcon: {
-            type: Sequelize.STRING,
         },
  
     },
@@ -40,8 +22,8 @@ module.exports = function(sequelize, Sequelize) {
         // also https://dzone.com/articles/sequelize-javascript-orm
         classMethods:{
             associate:function(models){
-                timeType.belongsTo(models.timeTypeGroup, { foreignKey: 'groupTypeID'});
-                timeType.hasMany(models.slots, { foreignKey: 'timeTypeID'} );
+                timeType.belongsTo(models.user, { foreignKey: 'id'});
+                timeType.hasMany(models.timeType, { foreignKey: 'timeTypeID'} );
             }
         }
     }
@@ -49,6 +31,6 @@ module.exports = function(sequelize, Sequelize) {
     
     );
  
-    return timeType;
+    return timeTypeGroup;
  
 }

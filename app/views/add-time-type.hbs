@@ -7,6 +7,12 @@
  
 <body>
     <form id="createtype" name="createtype" method="post" action="/add-time-type">
+        <label for="groupTypeID">timeTypeID</label>
+        <select name="groupTypeID">
+            {{#each timeTypeGroup}}
+            <option value="{{id}}">{{groupTypeName}}</option>
+            {{/each}}
+        </select>
         <label for="typeName">typeName</label>
         <input name="typeName" type="text" />
         <label for="typeColour">typeColour</label>

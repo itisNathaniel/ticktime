@@ -2,13 +2,44 @@
 <html>
  
 <head>
-    <title>Passport with Sequelize</title>
+    <title>ticktime v0.1</title>
 </head>
  
 <body>
-    <h2>Dashboard</h2>
-    <h5>Hurray! you are logged in.</h5>
- 
+    <h2>ticktime v0.1</h2>
+    <br>Welcome back - here's a temporary menu: 
+    <a href="/add-slot">Add Slot</a> |
+    <a href="/add-time-type">Add Time Type</a> |
+    <a href="/add-time-type-group">Add Time Type Group</a> |
+    <a href="/logout">Logout</a>
+
+    <br><br> temporary time breakdown
+
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <table>
+        <tr>
+            <th>timeType</th>
+            <th>start time</th>
+            <th>end time</th>
+            <th>description</th>
+        </tr>
+        
+        {{#each slots}}
+            <tr>
+            <td>{{timeTypeID}}</td>
+            <td>{{startTime}}</td>
+            <td>{{endTime}}</td>
+            <td>{{description}}</td>
+            </tr>
+        {{/each}}
+    </table>
+
 </body>
  
 </html>
