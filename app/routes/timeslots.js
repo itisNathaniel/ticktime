@@ -12,6 +12,10 @@ module.exports = function(app, models) {
         res.redirect('/');
     });
 
+    app.post('/add-time-type',isLoggedIn, function (req,res) {  
+        tSF.addTimeType(req,res,models);
+        res.redirect('/');
+    });
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())   
