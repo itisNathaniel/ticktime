@@ -5,7 +5,7 @@ var auth = require('./auth.js');
 module.exports = function(app, models) {
  
     // GET
-    app.get('/dashboard',isLoggedIn, function (req,res) { 
+    app.get('/',isLoggedIn, function (req,res) { 
         tSC.dashboard(req,res,models);
     });
 

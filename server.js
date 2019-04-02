@@ -6,6 +6,10 @@ var bodyParser  = require('body-parser');
 var config      = require('config');
 var exphbs      = require('express-handlebars');
 
+
+// DONT ALLOW THIS TO GO OUT
+app.use(express.static('public'))
+
 // bodyparser 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
