@@ -18,30 +18,32 @@
     </div>
     </div>
 
-    <div class="grid-container">
+    <div class="grid-container">            
 
         <div class="dayBreak">
             Today (25th January):
         </div>
 
-        <div class="time-block" style="background-color:#5345ba">
+        {{#each allEvents}}
+        <div class="time-block" style="background-color:#{{typeColour}}">
             <div class="grid-container">
                 <div class="grid-10 mobile-grid-100 cw-custom-upload">
-                    <div class="image" style="background:url(/custom_timetype_images/code.svg);"></div>
+                    <div class="image" style="background:url({{typeIcon}});"></div>
                 </div>
                 <div class="grid-60 mobile-grid-100 leftside">
-                    <span class="type" style="color:#5345ba">Coursework</span>
-                    <span class="typeName">Networking and User Interface Design</span>
-                    <span class="typeDesc">Description Here</span>
-                    <span class="typeTime">4:01pm - 6:10pm</span>
+                    <span class="type" style="color:#{{typeColour}}">{{groupTypeName}}</span>
+                    <span class="typeName">{{typeName}}</span>
+                    <span class="typeDesc">{{description}}</span>
+                    <span class="typeTime">{{durationHyphenated}}</span>
                 </div>
                 <div class="grid-30 mobile-grid-100 rightside">
-                    <span class="typeDuration">2 hours</span>
+                    <span class="typeDuration">{{durationHours}} {{durationHoursWording}}</span>
                     <a class="typeUpdate" href="#">View All</a>
                     <a class="typeUpdate" href="#">Modify</a>
                 </div>
             </div>
         </div>
+        {{/each}}
 
 
 
