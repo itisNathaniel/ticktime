@@ -1,6 +1,7 @@
 # Application Specific
 
 config/development.json
+userData/
 
 # Logs
 logs
