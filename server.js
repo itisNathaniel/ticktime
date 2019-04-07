@@ -9,7 +9,6 @@ var exphbs      = require('express-handlebars');
 // Set Global Directory
 global.__basedir = __dirname;
 
-
 // DONT ALLOW THIS TO GO OUT
 app.use(express.static('public'))
 
@@ -36,7 +35,7 @@ models.sequelize.sync().then(function() {
 
 //Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
-var timeSlotsRoutes = require('./app/routes/timeslots.js')(app, models);
+var timeSlotsRoutes = require('./app/routes/timeslots.js')(app, models, express);
 
 //load passport strategies
 require('./app/config/passport/passport.js')(passport, models.user);
