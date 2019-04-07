@@ -23,24 +23,6 @@ app.use(passport.session());
 //Models
 app.set('models', require('./app/models'));
 var models = app.get('models');
-models.user.hasMany(
-    models.timeTypeGroup, {
-        foreignKey: { id: 'userId', allowNull: false }, 
-        onDelete: 'CASCADE'
-    }); 
-
-models.timeTypeGroup.hasMany(
-    models.timeType, { 
-        foreignKey: { id: 'timeTypeId', allowNull: false },
-        onDelete: 'CASCADE'
-        }); 
-
-models.timeType.hasMany(
-    models.slots, { 
-        foreignKey: {id: 'timeTypeId', allowNull: false },
-        onDelete: 'CASCADE'
-    }); 
-
 
 //Sync Database
 models.sequelize.sync().then(function() {

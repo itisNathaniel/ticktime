@@ -45,15 +45,13 @@ module.exports = function(sequelize, Sequelize) {
             defaultValue: 'active'
         }
     },
-    // {
-    //     classMethods:{
-    //         associate:function(models){
-    //             user.hasMany(models.slots, { foreignKey: 'userID'} );
-    //             user.hasMany(models.timeType, { foreignKey: 'userID'} );
-    //         }
-    //     }
-    // }
     );
+
+    sequelize.models.user.hasMany(
+        sequelize.models.timeTypeGroup, {
+            foreignKey: { id: 'userId', allowNull: false }, 
+            onDelete: 'CASCADE'
+        }); 
  
     return User;
  

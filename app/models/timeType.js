@@ -6,10 +6,7 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        // groupTypeID: {
-        //     type: Sequelize.INTEGER,
-        //     notEmpty: true,
-        // },
+        // groupTypeId added at runtime by sequelize
 
         typeName: {
             type: Sequelize.STRING,
@@ -30,20 +27,16 @@ module.exports = function(sequelize, Sequelize) {
         },
  
     },
-    // {
-    //     // Really useful https://lorenstewart.me/2016/10/03/sequelize-crud-101/
-    //     // also https://dzone.com/articles/sequelize-javascript-orm
-    //     classMethods:{
-    //         associate:function(models){
-    //             timeType.belongsTo(models.timeTypeGroup, { foreignKey: 'groupTypeID'});
-    //             timeType.hasMany(models.slots, { foreignKey: 'timeTypeID'} );
-    //         }
-    //     }
-    // }
-    
     
     );
  
+    sequelize.models.timeType.hasMany(
+        sequelize.models.slots, { 
+            foreignKey: {id: 'timeTypeId', allowNull: false },
+            onDelete: 'CASCADE'
+        }); 
+
+        
     return timeType;
  
 }

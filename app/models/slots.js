@@ -6,10 +6,7 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        // timeTypeID: {
-        //     type: Sequelize.INTEGER,
-        //     notEmpty: true,
-        // },
+        // timeTypeID relation added at runtime by sequelize
 
         startTime: {
             type: Sequelize.DATE,
