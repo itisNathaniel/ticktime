@@ -23,6 +23,7 @@ exports.dashboard = function(req, res, models) {
         "description": posts[i].description, 
         "startTime":posts[i].startTime, 
         "endTime":posts[i].endTime,
+        "typeID": posts[i].timeType.id,
         "durationHyphenated": moment(posts[i].startTime).format('hh:mm a') + " - " + moment(posts[i].endTime).format('hh:mm a'),
         "durationHours": durationCalc,
         "durationHoursWording": (durationCalc == 1) ? "hour" : "hours", // nice ternary to get plural correct

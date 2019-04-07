@@ -26,7 +26,7 @@ module.exports = function(app, models, express) {
 
 
     // allow user to access own folder
-    app.get('/userImages/', isLoggedIn, function(req, res, next) {
+    app.get('/userImages', isLoggedIn, function(req, res, next) {
         app.use('/userImages/', express.static(path.join(__basedir, 'userData/' + req.user.id + "/uploads")));
         res.send('');
     });
