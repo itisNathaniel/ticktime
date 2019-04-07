@@ -44,13 +44,23 @@ module.exports = function(app, models, express) {
         var fileName = moment().format('YYYY-MM-DD-HHmmss') + ".png"; 
         let icon = req.files.icon;
         let path = __basedir + "/userData/" + req.user.id + "/uploads/" + fileName;
-        icon.mv(path, function(err) {
-          if (err)
-            return res.render('pages/error');
-        });
 
-        databaseFunctions.addTimeType(req,res,models, fileName);
-        res.redirect('/');
+        // validate type - needs work
+        if (icon.name.includes(".png"))
+        {
+            icon.mv(path, function(err) {
+                if (err)
+                    return res.render('pages/error');
+                }
+            );
+
+            databaseFunctions.addTimeType(req,res,models, fileName);
+            res.redirect('/');
+        }
+        else
+        {
+            res.redirect('back');
+        }
     });
 
     function isLoggedIn(req, res, next) {
