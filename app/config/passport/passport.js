@@ -70,9 +70,11 @@ module.exports = function(passport, user) {
                             return done(null, false);
                         }
                         if (newUser) {
-                            var userDir = __basedir + "/userData/" + newUser.id + "/uploads/";
+                            var userDir = __basedir + "/userData/" + newUser.id + "/";
+                            var uploadsDir = __basedir + "/userData/" + newUser.id + "/uploads/";
                             if (!fs.existsSync(userDir)){
                                fs.mkdirSync(userDir);
+                               fs.mkdirSync(uploadsDir);
                             }
                             return done(null, newUser);
                         }
