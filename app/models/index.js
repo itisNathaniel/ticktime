@@ -4,9 +4,10 @@ var fs          = require("fs");
 var path        = require("path");
 var Sequelize   = require("sequelize");
 var dbconfig    = config.get('database.connection');
-var sequelize   = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password, dbconfig);
 var db          = {};
  
+
+var sequelize   = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password, dbconfig);
  
 fs
     .readdirSync(__dirname)

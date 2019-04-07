@@ -1,6 +1,6 @@
 //load bcrypt
 var bCrypt = require('bcrypt-nodejs');
- 
+var fs = require('fs');
  
 module.exports = function(passport, user) {
  
@@ -70,6 +70,10 @@ module.exports = function(passport, user) {
                             return done(null, false);
                         }
                         if (newUser) {
+                            var userDir = __basedir + "/userData/" + newUser.id + "/";
+                            if (!fs.existsSync(userDir)){
+                               fs.mkdirSync(userDir);
+                            }
                             return done(null, newUser);
                         }
  

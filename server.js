@@ -6,6 +6,9 @@ var bodyParser  = require('body-parser');
 var config      = require('config');
 var exphbs      = require('express-handlebars');
 
+// Set Global Directory
+global.__basedir = __dirname;
+
 
 // DONT ALLOW THIS TO GO OUT
 app.use(express.static('public'))
