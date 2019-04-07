@@ -1,7 +1,18 @@
 var exports = module.exports = {}
 
 exports.dashboard = function(req, res, models) {
-            res.render('dashboard', {});
+  var posts = models.slots.findAll({
+    where: { userId: req.user.id },
+    include: [{
+      model: models.timeType,
+      duplicating: false,
+    },
+  ]
+  }).then(posts => {
+    console.log(posts);
+  });
+
+  res.render('dashboard', {});
 }
 
 exports.getBreakdown= function(req, res, models) {

@@ -27,5 +27,12 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
- 
+
+
+// more relationship declaration
+sequelize.models.slots.belongsTo(sequelize.models.timeType);
+sequelize.models.timeTypeGroup.belongsTo(sequelize.models.user);
+sequelize.models.timeType.belongsTo(sequelize.models.timeTypeGroup);
+
+
 module.exports = db;

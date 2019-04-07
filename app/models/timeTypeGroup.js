@@ -21,7 +21,9 @@ module.exports = function(sequelize, Sequelize) {
         sequelize.models.timeType, { 
             foreignKey: { id: 'timeTypeId', allowNull: false },
             onDelete: 'CASCADE'
-            }); 
+            }, 
+    ); 
+    
  
     return timeTypeGroup;
  

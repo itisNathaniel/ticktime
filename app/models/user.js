@@ -46,12 +46,27 @@ module.exports = function(sequelize, Sequelize) {
         }
     },
     );
-
+    
     sequelize.models.user.hasMany(
         sequelize.models.timeTypeGroup, {
             foreignKey: { id: 'userId', allowNull: false }, 
             onDelete: 'CASCADE'
-        }); 
+        }               
+    ); 
+
+    sequelize.models.user.hasMany(
+        sequelize.models.timeType, {
+            foreignKey: { id: 'userId', allowNull: false }, 
+            onDelete: 'CASCADE'
+        }                
+    ); 
+
+    sequelize.models.user.hasMany(
+        sequelize.models.slots, {
+            foreignKey: { id: 'userId', allowNull: false }, 
+            onDelete: 'CASCADE'
+        }                
+    ); 
  
     return User;
  

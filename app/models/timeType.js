@@ -34,7 +34,7 @@ module.exports = function(sequelize, Sequelize) {
         sequelize.models.slots, { 
             foreignKey: {id: 'timeTypeId', allowNull: false },
             onDelete: 'CASCADE'
-        }); 
+    }); 
 
         
     return timeType;

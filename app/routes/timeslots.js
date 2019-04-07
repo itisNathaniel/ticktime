@@ -41,26 +41,28 @@ module.exports = function(app, models, express) {
         res.redirect('/');
     });
     app.post('/add-time-type',isLoggedIn, function (req,res) { 
-        var fileName = moment().format('YYYY-MM-DD-HHmmss') + ".png"; 
-        let icon = req.files.icon;
-        let path = __basedir + "/userData/" + req.user.id + "/uploads/" + fileName;
+        let icon = " ";
+        let fileName = " ";
+        if(req.files != null)
+        {   
+            icon = req.files.icon;
+            // validate type - needs work
+            if (icon.name.includes(".png"))
+            {
+                fileName = moment().format('YYYY-MM-DD-HHmmss') + ".png"; 
+                let path = __basedir + "/userData/" + req.user.id + "/uploads/" + fileName;
 
-        // validate type - needs work
-        if (icon.name.includes(".png"))
-        {
-            icon.mv(path, function(err) {
-                if (err)
-                    return res.render('pages/error');
-                }
-            );
+                icon.mv(path, function(err) {
+                    if (err)
+                        return res.render('pages/error');
+                    }
+                );
+            }
+        }
 
-            databaseFunctions.addTimeType(req,res,models, fileName);
-            res.redirect('/');
-        }
-        else
-        {
-            res.redirect('back');
-        }
+        databaseFunctions.addTimeType(req,res,models, fileName);
+        res.redirect('/');
+
     });
 
     function isLoggedIn(req, res, next) {
