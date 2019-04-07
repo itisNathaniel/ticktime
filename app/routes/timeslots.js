@@ -9,6 +9,10 @@ module.exports = function(app, models) {
         tSC.dashboard(req,res,models);
     });
 
+    app.get('/breakdown',isLoggedIn, function (req,res) { 
+        tSC.getBreakdown(req,res,models);
+    });
+
     app.get('/add-slot', isLoggedIn, function (req,res) { 
          tSC.addTimeSlot(req,res,models);
     });

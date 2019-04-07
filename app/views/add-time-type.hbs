@@ -1,30 +1,32 @@
-<!DOCTYPE html>
-<html>
- 
-<head>
-    <title></title>
-</head>
- 
-<body>
+{{> header }}
+
+<div class="full-brandblock" style="background-color:#40BCD8">
+        <div class="grid-container">
+                <div class="grid-60 mobile-grid-100 leftside">
+                    <span class="typeName">Add Project</span>
+                </div>
+            </div>
+</div>
+    <br>
+    <div class="grid-container">
+
     <form id="createtype" name="createtype" method="post" action="/add-time-type">
-        <label for="groupTypeID">timeTypeID</label>
+        <label for="groupTypeID">Category</label>
         <select name="groupTypeID">
             {{#each timeTypeGroup}}
             <option value="{{id}}">{{groupTypeName}}</option>
             {{/each}}
         </select>
-        <label for="typeName">typeName</label>
+        <label for="typeName">Name</label>
         <input name="typeName" type="text" />
-        <label for="typeColour">typeColour</label>
-        <input name="typeColour" type="text" />
-        <label for="typeDescription">typeDescription</label>
+        <label for="typeColour">Colour</label>
+        <input name="typeColour" placeholder="#000000" type="text" />
+        <label for="typeDescription">Description</label>
         <input name="typeDescription" type="text" />
-        <label for="typeIcon">typeIcon</label>
+        <label for="typeIcon">Icon</label>
         <input name="typeIcon" type="text" />
 
-        <input class="btn" type="submit" value="Add Type" />
+        <input class="btn" type="submit" value="Add Project" />
     </form>
  
-</body>
- 
-</html>
+{{> footer}}

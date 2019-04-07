@@ -42,8 +42,10 @@ require('./app/config/passport/passport.js')(passport, models.user);
 //For Handlebars
 app.set('views', './app/views')
 app.engine('hbs', exphbs({
-    extname: '.hbs'
+    extname: '.hbs',
+    partialsDir: __dirname + '/app/views/partials/'
 }));
+
 app.set('view engine', '.hbs');
 
 

@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<html>
- 
-<head>
-    <title></title>
-</head>
- 
-<body>
+{{> header }}
+
+
+<div class="full-brandblock" style="background-color:#F39237">
+        <div class="grid-container">
+                <div class="grid-60 mobile-grid-100 leftside">
+                    <span class="typeName">Add Session</span>
+                </div>
+            </div>
+</div>
+    <br>
+    <div class="grid-container">
+
     <form id="addslot" name="addslot" method="post" action="/add-slot">
-        <label for="timeTypeID">timeTypeID</label>
+        <label for="timeTypeID">Project</label>
         <select name="timeTypeID">
             {{#each timeType}}
             <option value="{{id}}">{{typeName}}</option>
             {{/each}}
         </select>
-        <label for="startTime">startTime</label>
+        <label for="startTime">Start Time</label>
         <input name="startTime" type="datetime-local" />
-        <label for="endTime">endTime</label>
+        <label for="endTime">End Time</label>
         <input name="endTime" type="datetime-local" />
-        <label for="description">description</label>
+        <label for="description">Description</label>
         <input name="description" type="text" />
 
         <input class="btn" type="submit" value="Add Type" />
     </form>
- 
-</body>
- 
-</html>
+
+{{> footer}}

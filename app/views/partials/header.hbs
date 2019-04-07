@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>ticktime v0.1</title>
+    <link rel="stylesheet" type="text/css" href="https://na.thaniel.uk/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+ 
+<body>
+
+    <div class="topmenu">
+        <div class="grid-container">
+            <a href="/"><div class="left">ticktime <span class="alpha">alpha</span></div></a>
+            <div class="right">
+                {{#if showLogout includeZero=true}}
+                <a class="logout" href="/logout">Logout</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>

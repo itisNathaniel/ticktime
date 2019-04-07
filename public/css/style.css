@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i');
+
+/* dash */
+
+body {
+    font-family: 'open sans';
+}
+
+.time-block {
+    padding: 30px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.time-block a {
+    opacity: 0.8 !important;
+    color:#ffffff !important;
+}
+
+.typeName {
+    font-weight: bold;
+    font-size: 22px;
+    display: block;
+}
+
+.typeDesc {
+    display: block;
+    line-height: 2;
+    font-weight: 200;
+}
+
+.typeTime {
+    display: block;
+}
+
+.cw-icon {
+    font-size: 60px;
+    max-width: 90px;
+    text-align: left;
+    margin-top: -5px;
+}
+
+.typeDuration
+{
+    display: block;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.typeUpdate 
+{
+    display: block;
+}
+
+.typeDelete
+{
+    display: block;
+}
+
+.rightside
+{
+    text-align: right;
+    font-size: 14px;
+}
+
+.cw-custom-upload {
+    max-width: 70px;
+    }
+
+.cw-custom-upload .image {
+    width: 50px;
+    height: 100px;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+    background-size: contain !important;
+    margin: auto;
+}
+
+.leftside 
+{
+    margin-left: 10px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    padding-left: 20px;
+
+}
+
+.type {
+    background-color: #ffffff;
+    padding: 2px 6px;
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+.dayBreak 
+{
+    line-height: 2;
+    padding: 15px 15px;
+    color: #3e3e3e;
+    background-color: #f7f7f7;
+    margin-bottom: 10px;
+    font-weight: 600;
+    border-radius: 2px;
+    clear: both;
+}
+
+.addSlot
+{
+background-color: #F39237;
+}
+
+.addProject
+{
+background-color: #40BCD8;
+}
+
+.addCategory
+{
+    background-color: #15B097;
+}
+
+.invoice {
+    background-color: #393E41;
+}
+
+.topbutton {
+    text-align: center;
+    padding: 20px 10px;
+    margin: 10px 0;
+    color: #ffffff;
+    display: block;
+}
+
+.topbutton {
+    text-decoration: none !important;
+}
+
+.wrapper 
+{
+    max-width: 80%;
+    min-width: 200px;
+    margin: 0 auto;
+}
+
+.left 
+{
+    display: inline-block;
+    width: 80%;
+}
+.right
+{
+    display: inline-block;
+    width: 18%;
+    text-align: right;
+}
+
+.topmenu 
+{
+    padding: 25px 10px;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+}
+
+body {
+    margin: 0;
+}
+
+.logout 
+{
+    background-color: #dad9d9;
+    padding: 10px 10px;
+    color: #484848;
+    text-decoration: dashed;
+    border-radius: 3px;
+}
+
+.alpha {
+    background-color: #c15384;
+    padding: 4px 6px;
+    color: #ffff;
+    margin-left: 5px;
+}
+
+/* breakdown */
+.full-brandblock 
+{
+    margin-top: -20px;
+    padding: 30px;
+    color: #ffffff;
+}
+
+.calcExport
+{
+    padding: 0 20px 10px;
+    margin: 0 15px;
+    min-height: 120px;
+}
+
+.month {
+    font-size: 30px;
+    line-height: 1.6;
+}
+
+/* forms */
+
+label {
+    display: block;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+input, select 
+{
+    margin-bottom: 20px;
+    padding: 10px;
+    min-height: 20px;
+    display: block;
+    width: -webkit-fill-available;
+}
+
+select 
+{
+    height: 40px;
+}
+
+#addslot, #createtype
+{
+    width: 60%;
+    min-width: 200px;
+    margin: 0 auto;
+}
+
+.individualWeek
+{
+    display: block;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.titleBreak
+{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.hours {
+    font-weight: 300;
+}
+
+.topDashOptions
+{
+    background-color: #f7f7f7;
+}
+
+.describe
+{
+    margin-bottom: 15px;
+    display: block;
+    font-weight: 500;
+    padding: 10px;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    color: #2f2f2f;
+    font-size: 16px;
+}
+
+.innercontent
+{
+    padding: 0 10px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+button 
+{
+    padding: 10px;
+    border: 2px solid #f3f0f0;
+    -webkit-box-shadow: 4px 2px 5px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 4px 2px 5px 0px rgba(212,212,212,1);
+    box-shadow: 0.5px 0.5px 4px 0px rgba(212,212,212,1);
+    background-color: #5345ba;
+    color: #fff;
+    font-size: 15px;
+}

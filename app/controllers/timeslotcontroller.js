@@ -13,6 +13,19 @@ exports.dashboard = function(req, res, models) {
       });
 }
 
+exports.getBreakdown= function(req, res, models) {
+  var modelTypes = models.slots.findAll({  
+      userID: req.user.id
+   }).then(slots => {
+      var parentType = models.timeType.findAll({  
+          userID: req.user.id
+      }).then(parentType => {
+          console.log(`Found slots: ${slots.length}`);
+          res.render('breakdown', { slots: slots, parentType:parentType });
+      });
+    });
+}
+
 exports.addTimeSlot = function(req, res, models) {
     var modelTypes = models.timeType.findAll({  
         userID: req.user.id
