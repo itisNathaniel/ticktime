@@ -17,7 +17,7 @@ exports.dashboard = function(req, res, models) {
     for(var i = 0; i < posts.length; i++)
     {
       // make data nice before sending it to the frontend
-      var durationCalc = moment.duration(moment(posts[i].endTime).diff(moment(posts[i].startTime))).asHours();
+      durationCalc = parseFloat(moment.duration(moment(posts[i].endTime).diff(moment(posts[i].startTime))).asHours().toFixed(1));
       var thisEvent = { 
         "typeName": posts[i].timeType.typeName,
         "description": posts[i].description, 
@@ -39,16 +39,49 @@ exports.dashboard = function(req, res, models) {
 }
 
 exports.getBreakdown= function(req, res, models) {
-  var modelTypes = models.slots.findAll({  
-      userID: req.user.id
-   }).then(slots => {
-      var parentType = models.timeType.findAll({  
-          userID: req.user.id
-      }).then(parentType => {
-          console.log(`Found slots: ${slots.length}`);
-          res.render('breakdown', { slots: slots, parentType:parentType });
-      });
-    });
+  var posts = models.slots.findAll({
+    where: { userId: req.user.id, timeTypeId: req.query.type },
+    include: [{
+      model: models.timeType,
+      duplicating: false,
+      include: [
+        { model: models.timeTypeGroup 
+        }
+      ]
+    },
+  ],
+  }).then(posts => {
+    var headerColor;
+    var name;
+    var groupType;
+    var icon;
+    var allEvents = [];
+    for(var i = 0; i < posts.length; i++)
+    {
+      // make data nice before sending it to the frontend
+      headerColor = posts[i].timeType.typeColour;
+      name = posts[i].timeType.typeName;
+      groupType = posts[i].timeType.timeTypeGroup.groupTypeName;
+      icon = "/userImages/" + posts[i].timeType.typeIcon;
+
+      durationCalc = parseFloat(moment.duration(moment(posts[i].endTime).diff(moment(posts[i].startTime))).asHours().toFixed(1));
+      var thisEvent = { 
+        "typeName": posts[i].timeType.typeName,
+        "description": posts[i].description, 
+        "startTime":posts[i].startTime, 
+        "endTime":posts[i].endTime,
+        "durationHyphenated": moment(posts[i].startTime).format('hh:mm a') + " - " + moment(posts[i].endTime).format('hh:mm a'),
+        "durationHours": durationCalc,
+        "durationHoursWording": (durationCalc == 1) ? "hour" : "hours", // nice ternary to get plural correct
+        "typeIcon": "/userImages/" + posts[i].timeType.typeIcon,
+        "typeColour": posts[i].timeType.typeColour,
+        "groupTypeName": posts[i].timeType.timeTypeGroup.groupTypeName,
+      };
+      allEvents.push(thisEvent);
+    }
+    console.log(posts);
+    res.render('breakdown', {allEvents: allEvents, headerColor:headerColor,name:name,groupType:groupType,icon:icon });
+  });
 }
 
 exports.addTimeSlot = function(req, res, models) {
