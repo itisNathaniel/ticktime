@@ -45,14 +45,14 @@ module.exports = function(sequelize, Sequelize) {
             defaultValue: 'active'
         }
     },
-    {
-        classMethods:{
-            associate:function(models){
-                user.hasMany(models.slots, { foreignKey: 'userID'} );
-                user.hasMany(models.timeType, { foreignKey: 'userID'} );
-            }
-        }
-    }
+    // {
+    //     classMethods:{
+    //         associate:function(models){
+    //             user.hasMany(models.slots, { foreignKey: 'userID'} );
+    //             user.hasMany(models.timeType, { foreignKey: 'userID'} );
+    //         }
+    //     }
+    // }
     );
  
     return User;

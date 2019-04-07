@@ -2,8 +2,7 @@ var exports = module.exports = {}
 
 exports.addSlot = function(req, res, models) {
     models.slots.create({  
-        userID: req.user.id,
-        timeTypeID: req.body.timeTypeID,
+        timeTypeId: req.body.timeTypeID,
         description: req.body.description,
         startTime: req.body.startTime,
         endTime: req.body.endTime
@@ -15,7 +14,7 @@ exports.addSlot = function(req, res, models) {
 
 exports.addTimeTypeGroup = function(req, res, models) {
     models.timeTypeGroup.create({  
-        userID: req.user.id,
+        userId: req.user.id,
         groupTypeName: req.body.typeName,
       })
       .then(newslot => {
@@ -25,8 +24,7 @@ exports.addTimeTypeGroup = function(req, res, models) {
 
 exports.addTimeType = function(req, res, models) {
     models.timeType.create({  
-        userID: req.user.id,
-        groupTypeID: req.body.groupTypeID,
+        timeTypeGroupId: req.body.groupTypeID,
         typeName: req.body.typeName,
         typeDescription: req.body.typeDescription,
         typeColour: req.body.typeColour,

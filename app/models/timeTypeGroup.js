@@ -6,10 +6,11 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        userID: {
-            type: Sequelize.INTEGER,
-            notEmpty: true,
-        },
+        // Added by relation
+        // userID: {
+        //     type: Sequelize.INTEGER,
+        //     notEmpty: true,
+        // },
 
         groupTypeName: {
             type: Sequelize.STRING,
@@ -17,16 +18,16 @@ module.exports = function(sequelize, Sequelize) {
         },
  
     },
-    {
-        // Really useful https://lorenstewart.me/2016/10/03/sequelize-crud-101/
-        // also https://dzone.com/articles/sequelize-javascript-orm
-        classMethods:{
-            associate:function(models){
-                timeType.belongsTo(models.user, { foreignKey: 'id'});
-                timeType.hasMany(models.timeType, { foreignKey: 'timeTypeID'} );
-            }
-        }
-    }
+    // {
+    //     // Really useful https://lorenstewart.me/2016/10/03/sequelize-crud-101/
+    //     // also https://dzone.com/articles/sequelize-javascript-orm
+    //     classMethods:{
+    //         associate:function(models){
+    //             timeType.belongsTo(models.user, { foreignKey: 'id'});
+    //             timeType.hasMany(models.timeType, { foreignKey: 'timeTypeID'} );
+    //         }
+    //     }
+    // }
     
     
     );

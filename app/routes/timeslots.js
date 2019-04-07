@@ -1,37 +1,37 @@
-var tSC = require('../controllers/timeslotcontroller.js');
-var tSF = require('../functions/dbFunctions.js');
+var timeSlotController = require('../controllers/timeslotcontroller.js');
+var databaseFunctions = require('../functions/dbFunctions.js');
 var auth = require('./auth.js');
 
 module.exports = function(app, models) {
  
     // GET
     app.get('/',isLoggedIn, function (req,res) { 
-        tSC.dashboard(req,res,models);
+        timeSlotController.dashboard(req,res,models);
     });
 
     app.get('/breakdown',isLoggedIn, function (req,res) { 
-        tSC.getBreakdown(req,res,models);
+        timeSlotController.getBreakdown(req,res,models);
     });
 
     app.get('/add-slot', isLoggedIn, function (req,res) { 
-         tSC.addTimeSlot(req,res,models);
+         timeSlotController.addTimeSlot(req,res,models);
     });
     app.get('/add-time-type', isLoggedIn, function (req,res) { 
-        tSC.addTimeType(req,res,models);
+        timeSlotController.addTimeType(req,res,models);
     });
-    app.get('/add-time-type-group', isLoggedIn, tSC.addTimeTypeGroup);
+    app.get('/add-time-type-group', isLoggedIn, timeSlotController.addTimeTypeGroup);
 
     // POST
     app.post('/add-slot',isLoggedIn, function (req,res) {  
-        tSF.addSlot(req,res,models);
+        databaseFunctions.addSlot(req,res,models);
         res.redirect('/');
     });
     app.post('/add-time-type-group',isLoggedIn, function (req,res) {  
-        tSF.addTimeTypeGroup(req,res,models);
+        databaseFunctions.addTimeTypeGroup(req,res,models);
         res.redirect('/');
     });
     app.post('/add-time-type',isLoggedIn, function (req,res) {  
-        tSF.addTimeType(req,res,models);
+        databaseFunctions.addTimeType(req,res,models);
         res.redirect('/');
     });
 

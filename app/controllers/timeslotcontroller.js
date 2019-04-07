@@ -1,16 +1,7 @@
 var exports = module.exports = {}
 
 exports.dashboard = function(req, res, models) {
-    var modelTypes = models.slots.findAll({  
-        userID: req.user.id
-     }).then(slots => {
-        var parentType = models.timeType.findAll({  
-            userID: req.user.id
-        }).then(parentType => {
-            console.log(`Found slots: ${slots.length}`);
-            res.render('dashboard', { slots: slots, parentType:parentType });
-        });
-      });
+            res.render('dashboard', {});
 }
 
 exports.getBreakdown= function(req, res, models) {

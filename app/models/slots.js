@@ -6,15 +6,10 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
 
-        userID: {
-            type: Sequelize.INTEGER,
-            notEmpty: true,
-        },
-
-        timeTypeID: {
-            type: Sequelize.INTEGER,
-            notEmpty: true,
-        },
+        // timeTypeID: {
+        //     type: Sequelize.INTEGER,
+        //     notEmpty: true,
+        // },
 
         startTime: {
             type: Sequelize.DATE,
@@ -30,16 +25,8 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.TEXT,
         },
     },
-    {
-        classMethods:{
-            associate:function(models){
-                slots.belongsTo(models.user,{ foreignKey: 'id'});
-            }
-        }
-    }
  
-    )
- 
+    ) 
     return Slots;
  
 }
