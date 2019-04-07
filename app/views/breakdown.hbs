@@ -1,13 +1,13 @@
 {{> header }}
 
-<div class="full-brandblock" style="background-color:#5345ba">
+<div class="full-brandblock" style="background-color:#{{headerColor}}">
         <div class="grid-container">
                 <div class="grid-10 mobile-grid-100 cw-custom-upload">
-                    <div class="image" style="background:url(/custom_timetype_images/code.svg);"></div>
+                    <div class="image" style="background:url({{icon}});"></div>
                 </div>
                 <div class="grid-60 mobile-grid-100 leftside">
-                    <span class="type" style="color:#5345ba">Coursework</span><br><br>
-                    <span class="typeName">Networking and User Interface Design</span>
+                    <span class="type" style="color:#{{headerColor}}">{{groupType}}</span><br><br>
+                    <span class="typeName">{{name}}</span>
                 </div>
             </div>
 </div>
@@ -51,10 +51,32 @@
         </div><br>
 
 
-    <div class="grid-container topDashOptions">
+    <div class="grid-container">
         <div class="dayBreak">
             Breakdown:
         </div>
+
+    {{#each allEvents}}
+        <div class="time-block" style="background-color:#{{typeColour}}">
+            <div class="grid-container">
+                <div class="grid-10 mobile-grid-100 cw-custom-upload">
+                    <div class="image" style="background:url({{typeIcon}});"></div>
+                </div>
+                <div class="grid-60 mobile-grid-100 leftside">
+                    <span class="type" style="color:#{{typeColour}}">{{groupTypeName}}</span>
+                    <span class="typeName">{{typeName}}</span>
+                    <span class="typeDesc">{{description}}</span>
+                    <span class="typeTime">{{durationHyphenated}}</span>
+                </div>
+                <div class="grid-30 mobile-grid-100 rightside">
+                    <span class="typeDuration">{{durationHours}} {{durationHoursWording}}</span>
+                    <a class="typeUpdate" href="#">View All</a>
+                    <a class="typeUpdate" href="#">Modify</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+        
 
 
 </div>
