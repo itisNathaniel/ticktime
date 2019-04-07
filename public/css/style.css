@@ -209,13 +209,14 @@ label {
     font-weight: 600;
 }
 
-input, select 
+input, select, .jscolor 
 {
     margin-bottom: 20px;
     padding: 10px;
     min-height: 20px;
     display: block;
     width: -webkit-fill-available;
+    border: 1.5px solid #dfdfdf;
 }
 
 select 

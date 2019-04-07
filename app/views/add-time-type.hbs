@@ -17,12 +17,12 @@
             <option value="{{id}}">{{groupTypeName}}</option>
             {{/each}}
         </select>
-        <label for="typeName">Name</label>
-        <input name="typeName" type="text" />
+        <label for="typeName" >Name</label>
+        <input name="typeName" type="text" required/>
         <label for="typeColour">Colour</label>
-        <input name="typeColour" placeholder="#000000" type="text" />
+        <input class="jscolor" name="typeColour" value="efefef" required/>
         <label for="typeDescription">Description</label>
-        <input name="typeDescription" type="text" />
+        <input name="typeDescription" type="text" required/>
         <label for="typeIcon">Icon</label>
         <input accept="image/png" name="icon" type="file" />
 
