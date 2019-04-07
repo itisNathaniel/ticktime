@@ -1,10 +1,11 @@
-var express     = require('express');
-var app         = express();
-var passport    = require('passport');
-var session     = require('express-session');
-var bodyParser  = require('body-parser');
-var config      = require('config');
-var exphbs      = require('express-handlebars');
+var express         = require('express');
+var app             = express();
+var passport        = require('passport');
+var session         = require('express-session');
+var bodyParser      = require('body-parser');
+var config          = require('config');
+var exphbs          = require('express-handlebars');
+const fileUpload    = require('express-fileupload');
 
 // Set Global Directory
 global.__basedir = __dirname;
@@ -15,6 +16,7 @@ app.use(express.static('public'))
 // bodyparser 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(fileUpload());
 
 // passport
 passportConfig = config.get('passport');

@@ -22,13 +22,13 @@ exports.addTimeTypeGroup = function(req, res, models) {
       });
     }
 
-exports.addTimeType = function(req, res, models) {
+exports.addTimeType = function(req, res, models, fileName) {
     models.timeType.create({  
         timeTypeGroupId: req.body.groupTypeID,
         typeName: req.body.typeName,
         typeDescription: req.body.typeDescription,
         typeColour: req.body.typeColour,
-        typeIcon: req.body.typeIcon
+        typeIcon: fileName
       })
       .then(newslot => {
         console.log(`New time type woo`);

@@ -10,7 +10,7 @@
     <br>
     <div class="grid-container">
 
-    <form id="createtype" name="createtype" method="post" action="/add-time-type">
+    <form id="createtype" name="createtype" method="post" encType="multipart/form-data" action="/add-time-type">
         <label for="groupTypeID">Category</label>
         <select name="groupTypeID">
             {{#each timeTypeGroup}}
@@ -24,7 +24,7 @@
         <label for="typeDescription">Description</label>
         <input name="typeDescription" type="text" />
         <label for="typeIcon">Icon</label>
-        <input name="typeIcon" type="text" />
+        <input name="icon" type="file" />
 
         <input class="btn" type="submit" value="Add Project" />
     </form>
