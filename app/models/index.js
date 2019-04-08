@@ -8,7 +8,9 @@ var db          = {};
  
 
 var sequelize   = new Sequelize(dbconfig.database, dbconfig.username, dbconfig.password, dbconfig);
- 
+
+global.__sequelize = sequelize;
+
 fs
     .readdirSync(__dirname)
     .filter(function(file) {

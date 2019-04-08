@@ -6,18 +6,35 @@ exports.dashboard = function(req, res, models) {
     where: { userId: req.user.id },
     include: [{
       model: models.timeType,
-      duplicating: false,
       include: [
         { model: models.timeTypeGroup }
       ]
     },
   ],
+  order: [['endTime', 'DESC']],
+  //group: [__sequelize.fn('DAY', __sequelize.col('endTime'))]
   }).then(posts => {
+    console.log(posts);
     var allEvents = [];
+    let icon = "";
+    let endDay = "";
     for(var i = 0; i < posts.length; i++)
     {
+      icon = posts[i].timeType.typeIcon;
+      if(icon == "" || icon == " ") {
+        icon = "";
+      }
+      else{
+        icon = "/user/" + posts[i].timeType.typeIcon;
+      }
+
+      // get first letters
+      var matches = posts[i].timeType.timeTypeGroup.groupTypeName.match(/\b(\w)/g);
+      var acronym = matches.join(''); // JSON
+      
       // make data nice before sending it to the frontend
       durationCalc = parseFloat(moment.duration(moment(posts[i].endTime).diff(moment(posts[i].startTime))).asHours().toFixed(1));
+      endDay = moment(posts[i].endTime).format("DD/MM/YYYY");
       var thisEvent = { 
         "typeName": posts[i].timeType.typeName,
         "description": posts[i].description, 
@@ -27,13 +44,14 @@ exports.dashboard = function(req, res, models) {
         "durationHyphenated": moment(posts[i].startTime).format('hh:mm a') + " - " + moment(posts[i].endTime).format('hh:mm a'),
         "durationHours": durationCalc,
         "durationHoursWording": (durationCalc == 1) ? "hour" : "hours", // nice ternary to get plural correct
-        "typeIcon": "/userImages/" + posts[i].timeType.typeIcon,
+        "typeIcon": icon,
         "typeColour": posts[i].timeType.typeColour,
         "groupTypeName": posts[i].timeType.timeTypeGroup.groupTypeName,
+        "groupTypeAcronym": acronym,
       };
+
       allEvents.push(thisEvent);
     }
-    console.log(posts);
     res.render('dashboard', {allEvents: allEvents});
   });
 
@@ -63,7 +81,12 @@ exports.getBreakdown= function(req, res, models) {
       headerColor = posts[i].timeType.typeColour;
       name = posts[i].timeType.typeName;
       groupType = posts[i].timeType.timeTypeGroup.groupTypeName;
-      icon = "/userImages/" + posts[i].timeType.typeIcon;
+      if(icon != " ") {
+        icon = "/user/" + posts[i].timeType.typeIcon;
+      }
+      else{
+        icon = "";
+      }
 
       durationCalc = parseFloat(moment.duration(moment(posts[i].endTime).diff(moment(posts[i].startTime))).asHours().toFixed(1));
       var thisEvent = { 
@@ -74,7 +97,7 @@ exports.getBreakdown= function(req, res, models) {
         "durationHyphenated": moment(posts[i].startTime).format('hh:mm a') + " - " + moment(posts[i].endTime).format('hh:mm a'),
         "durationHours": durationCalc,
         "durationHoursWording": (durationCalc == 1) ? "hour" : "hours", // nice ternary to get plural correct
-        "typeIcon": "/userImages/" + posts[i].timeType.typeIcon,
+        "typeIcon": icon,
         "typeColour": posts[i].timeType.typeColour,
         "groupTypeName": posts[i].timeType.timeTypeGroup.groupTypeName,
       };

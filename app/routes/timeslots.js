@@ -26,9 +26,12 @@ module.exports = function(app, models, express) {
 
 
     // allow user to access own folder
-    app.get('/userImages', isLoggedIn, function(req, res, next) {
-        app.use('/userImages/', express.static(path.join(__basedir, 'userData/' + req.user.id + "/uploads")));
-        res.send('');
+    app.get('/user/:file', isLoggedIn, function(req, res, next) {
+        // stop traversing
+        var safeSuffix = path.normalize(req.params.file).replace(/^(\.\.(\/|\\|$))+/, '');
+        var safeJoin = path.join(__basedir, 'userData/' + req.user.id + "/uploads", safeSuffix);
+        app.use('/', express.static(safeJoin));
+        res.sendFile(safeJoin);
     });
 
     // POST
@@ -42,7 +45,7 @@ module.exports = function(app, models, express) {
     });
     app.post('/add-time-type',isLoggedIn, function (req,res) { 
         let icon = " ";
-        let fileName = " ";
+        let fileName = "";
         if(req.files != null)
         {   
             icon = req.files.icon;

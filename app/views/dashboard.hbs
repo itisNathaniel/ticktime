@@ -23,12 +23,15 @@
         <div class="dayBreak">
             Today (25th January):
         </div>
-
         {{#each allEvents}}
         <div class="time-block" style="background-color:#{{typeColour}}">
             <div class="grid-container">
                 <div class="grid-10 mobile-grid-100 cw-custom-upload">
+                    {{#if typeIcon}}
                     <div class="image" style="background:url({{typeIcon}});"></div>
+                    {{else}}
+                    <span class="noIcon">{{groupTypeAcronym}}</span>
+                    {{/if }}
                 </div>
                 <div class="grid-60 mobile-grid-100 leftside">
                     <span class="type" style="color:#{{typeColour}}">{{groupTypeName}}</span>
@@ -38,7 +41,7 @@
                 </div>
                 <div class="grid-30 mobile-grid-100 rightside">
                     <span class="typeDuration">{{durationHours}} {{durationHoursWording}}</span>
-                    <a class="typeUpdate" href="/breakdown?type={{typeID}}">View {{typeName}}</a>
+                    <a class="typeUpdate" href="/breakdown?type={{typeID}}">View All</a>
                     <a class="typeUpdate" href="#">Modify</a>
                 </div>
             </div>
